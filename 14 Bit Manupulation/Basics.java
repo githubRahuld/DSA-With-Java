@@ -1,7 +1,7 @@
 public class Basics {
     public static void main(String[] args) {
         // bitwise &
-        System.out.println(5&6); // 4
+        System.out.println(5 & 6); // 4
 
         // Bitwise |
         System.out.println(5 | 6);

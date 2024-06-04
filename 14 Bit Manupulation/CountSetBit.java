@@ -20,6 +20,14 @@ public class CountSetBit {
     public static void main(String[] args) {
         int n ;
 
+        
        System.out.println( countSetBit(15)); //4
     }    
 }
+
+ /* convert upercase to lowercase
+
+ char ch = 'Z';
+ System.out.println((char)(ch | ' '));
+
+ */
