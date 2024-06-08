@@ -24,3 +24,4 @@ public class GridWays {
 }
 
 // direct formula 
+// (n-1 + m-1)!/(n-1)!(m-1)!
