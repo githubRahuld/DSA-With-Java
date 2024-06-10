@@ -204,6 +204,47 @@ public class LinkedList {
 
     }
 
+    //* detecting cycle
+    public boolean isCycle(){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            if(slow == fast){
+                return true;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return false;
+    }
+    //* Removing cycle */
+    public void removeCycle(Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+
+            if(slow == fast){
+                break;
+            }
+
+            slow= slow.next;
+            fast = fast.next.next;
+        }
+
+        slow = head;
+        while(slow.next != fast.next){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        //break the cycle 
+        fast.next = null;
+
+
+    }
+
     public void print() {
         if (head == null) {
             System.out.println("LL is empty!");
@@ -220,45 +261,61 @@ public class LinkedList {
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.print();
-        ll.addAtHead(2);
-        ll.addAtHead(1);
-        ll.print();
-
-        ll.addATTail(3);
-        ll.addATTail(4);
-        ll.print();
-
-        ll.addInMiddle(2, 5);
-        ll.print();
-
-        // ll.removeAtHead();
+        // ll.print();
+        // ll.addAtHead(2);
+        // ll.addAtHead(1);
         // ll.print();
 
-        ll.removeNode(4);
-        ll.print();
+        // ll.addATTail(3);
+        // ll.addATTail(4);
+        // ll.print();
 
-        //* Search */
-        int searchValue = ll.search(1);
-        if(searchValue == -1){
-            System.out.println("Key not found");
-        }else {
-            System.out.println("key found at index: "+  searchValue);
-        }
+        // ll.addInMiddle(2, 5);
+        // ll.print();
 
-        //* recursive search */
-        System.out.println(ll.searchRec(head,0,5));
+        // // ll.removeAtHead();
+        // // ll.print();
+
+        // ll.removeNode(4);
+        // ll.print();
+
+        // //* Search */
+        // int searchValue = ll.search(1);
+        // if(searchValue == -1){
+        //     System.out.println("Key not found");
+        // }else {
+        //     System.out.println("key found at index: "+  searchValue);
+        // }
+
+        // //* recursive search */
+        // System.out.println(ll.searchRec(head,0,5));
 
 
-        //* reverse LL */
-        ll.reverseLL();
-        ll.print();
+        // //* reverse LL */
+        // ll.reverseLL();
+        // ll.print();
 
-        ll.addAtHead(5);
-        ll.addAtHead(2);
-        ll.addAtHead(1);
+        // //* check palindrome */
+        // ll.addAtHead(5);
+        // ll.addAtHead(2);
+        // ll.addAtHead(1);
+    
         ll.print();
         System.out.println(ll.isPalindrome(head));
+
+        //* check cycle */
+        head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = head;
+
+        // ll.print(); infinty loop means cycle present
+        System.out.println(ll.isCycle());
+
+        //* Remove cycle */
+        ll.removeCycle(head);
+
+        System.out.println(ll.isCycle());
 
         System.out.println("size of LL : "+size);
 
