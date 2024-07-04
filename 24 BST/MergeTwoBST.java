@@ -34,23 +34,23 @@ public class MergeTwoBST {
             if (list1.get(i) < list2.get(j)) {
                 finalList.add(list1.get(i));
                 i++;
-                k++;
+
             } else {
                 finalList.add(list2.get(j));
                 j++;
-                k++;
+
             }
         }
 
         while (i < n) {
             finalList.add(list1.get(i));
             i++;
-            k++;
+
         }
         while (j < m) {
             finalList.add(list2.get(j));
             j++;
-            k++;
+
         }
         return finalList;
     }
