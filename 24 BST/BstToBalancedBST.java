@@ -14,13 +14,13 @@ public class BstToBalancedBST {
         }
     }
 
-    public static void preOrder(Node root, ArrayList<Integer> preorder) {
+    public static void inOrder(Node root, ArrayList<Integer> inOrder) {
         if (root == null)
             return;
 
-        preOrder(root.left, preorder);
-        preorder.add(root.data);
-        preOrder(root.right, preorder);
+        inOrder(root.left, inOrder);
+        inOrder.add(root.data);
+        inOrder(root.right, inOrder);
     }
 
     public static Node balancedBST(ArrayList<Integer> preoder, int st, int end) {
@@ -38,14 +38,14 @@ public class BstToBalancedBST {
     }
 
     public static Node bstToBalancedBST(Node root) {
-        // Step 1: store preorder of given bst (it will give sorted array)
+        // Step 1: store inOrder of given bst (it will give sorted array)
         // step 2: create balanced BST from sorted array.
 
-        ArrayList<Integer> preorder = new ArrayList<>();
-        preOrder(root, preorder);
+        ArrayList<Integer> inOrder = new ArrayList<>();
+        inOrder(root, inOrder);
 
         // step 2
-        root = balancedBST(preorder, 0, preorder.size() - 1);
+        root = balancedBST(inOrder, 0, inOrder.size() - 1);
 
         return root;
     }
